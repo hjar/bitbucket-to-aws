@@ -1,0 +1,36 @@
+# Set up by adding these environment variables:
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY (set as Secured)
+# AWS_REGION
+# AWS_CODEDEPLOY_APP
+# AWS_CODEDEPLOY_GROUP
+# AWS_S3_BUCKET
+
+image: php:7.0
+
+pipelines:
+  branches:
+    # Only do a full deployment from the master branch
+    master:
+      - step:
+          caches:
+            - composer
+          script:
+            - sh bitbucket-pipelines-common.sh
+            - vendor/bin/phpunit
+            - sh bitbucket-pipelines-codedeploy.sh
+    # Run tests for the develop branch
+    develop:
+      - step:
+          caches:
+            - composer
+          script:
+            - sh bitbucket-pipelines-common.sh
+            - vendor/bin/phpunit
+  custom:
+    # Allow manually launching a test from Bitbucket
+    just-test-without-cache:
+      - step:
+          script:
+            - sh bitbucket-pipelines-common.sh
+            - vendor/bin/phpunit

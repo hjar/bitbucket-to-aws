@@ -1,0 +1,19 @@
+# Definition file for AWS CodeDeploy
+
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/app
+permissions:
+  - object: /var/www/app
+    owner: apache
+    group: apache
+    type:
+      - file
+      - directory
+hooks:
+  BeforeInstall:
+    - location: codedeploy-prepare.sh
+  AfterInstall:
+    - location: codedeploy-setup-app.sh

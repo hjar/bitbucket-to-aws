@@ -25,7 +25,7 @@ This is mostly sample content so tweak to your app's needs. The EC2 instances in
 These steps assume you either know your way around these parts or are open to reading the instructions AWS gives you at each step.
 
 1. **Your app**
-    1. Include the files `bitbucket-pipelines.yml`, `bitbucket-pipelines-codedeploy.sh`, `bitbucket-pipelines-common.sh', `appspec.yml`, `codedeploy-prepare.sh` and `codedeploy-setup-app.sh` from this repository to your app's root directory.
+    1. Include the files `bitbucket-pipelines.yml`, `bitbucket-pipelines-codedeploy.sh`, `bitbucket-pipelines-common.sh`, `appspec.yml`, `codedeploy-prepare.sh` and `codedeploy-setup-app.sh` from this repository to your app's root directory.
 1. **S3**
     1. Create a bucket. This tutorial will use the name `bitbucket-pipelines-bucket`.
     1. Upload an Apache configuration file. See example configuration (*production.apache.conf*) below.
